@@ -1,14 +1,19 @@
 class MaxIntSet
   def initialize(max)
+    @store = Array.new(max, false)
+    @max = max
   end
 
   def insert(num)
+    @store[num] = true
   end
 
   def remove(num)
+    @store[num] = false
   end
 
   def include?(num)
+    raise "out of bounds" if num > @max
   end
 
   private
