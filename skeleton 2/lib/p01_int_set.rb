@@ -35,19 +35,26 @@ class IntSet
   end
 
   def insert(num)
+    # [num] << num
+    @store[num % num_buckets] << num
   end
 
   def remove(num)
+    @store[num % num_buckets].delete(num)
   end
 
   def include?(num)
+    # p [num]
+    # [num].include?(num)
+    @store[num % num_buckets].include?(num)
   end
 
   private
 
-  def [](num)
+  # def [](num)
     # optional but useful; return the bucket corresponding to `num`
-  end
+    # @store[num % num_buckets]
+  # end
 
   def num_buckets
     @store.length
@@ -84,3 +91,8 @@ class ResizingIntSet
   def resize!
   end
 end
+
+
+
+# Questions
+# Why brackets no work
